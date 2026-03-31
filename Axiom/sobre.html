@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre Nosotros — Axiom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --blue:#2563EB; --green:#4ADE80; --dark:#0a0f1e; --dark2:#0f172a; --card:#111827; --border:rgba(255,255,255,0.07); --text:#e2e8f0; --muted:#94a3b8; --grad:linear-gradient(135deg,#2563EB,#4ADE80); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Exo 2',sans-serif; background:var(--dark); color:var(--text); }
+    nav { display:flex; align-items:center; justify-content:space-between; padding:0 24px; height:64px; background:linear-gradient(90deg,#2563EB,#1aa060,#4ADE80); }
+    .back { color:#fff; text-decoration:none; font-weight:700; font-size:0.85rem; letter-spacing:1px; border:2px solid #fff; padding:7px 16px; border-radius:30px; transition:background .2s,color .2s; }
+    .back:hover { background:#fff; color:#2563EB; }
+    .nav-title { font-weight:900; font-size:1.1rem; letter-spacing:2px; color:#fff; text-transform:uppercase; }
+    .page { max-width:960px; margin:0 auto; padding:60px 28px 80px; }
+    .tag { font-size:0.7rem; letter-spacing:4px; color:var(--green); text-transform:uppercase; margin-bottom:10px; }
+    h1 { font-size:2.4rem; font-weight:900; margin-bottom:12px; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .subtitle { color:var(--muted); font-size:1rem; line-height:1.7; max-width:620px; margin-bottom:16px; }
+    .divider { width:48px; height:3px; background:var(--grad); border-radius:2px; margin-bottom:48px; }
+    .section-label { font-size:0.7rem; letter-spacing:4px; color:var(--green); text-transform:uppercase; margin-bottom:20px; margin-top:56px; }
+
+    /* Hero */
+    .hero-banner { background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(74,222,128,0.06)); border:1px solid rgba(74,222,128,0.2); border-radius:16px; padding:40px; margin-bottom:48px; display:flex; gap:32px; align-items:center; flex-wrap:wrap; }
+    .hero-banner-icon { font-size:3.5rem; }
+    .hero-banner h2 { font-size:1.5rem; font-weight:900; margin-bottom:10px; }
+    .hero-banner p { color:var(--muted); line-height:1.75; max-width:520px; }
+
+    /* Historia timeline */
+    .timeline { display:flex; flex-direction:column; gap:0; margin-bottom:0; }
+    .tl-item { display:flex; gap:24px; padding-bottom:36px; }
+    .tl-item:last-child { padding-bottom:0; }
+    .tl-left { display:flex; flex-direction:column; align-items:center; }
+    .tl-dot { width:44px; height:44px; border-radius:50%; background:var(--grad); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+    .tl-line { width:2px; flex:1; background:linear-gradient(to bottom,#2563EB,#4ADE80); margin-top:6px; min-height:36px; opacity:0.4; }
+    .tl-item:last-child .tl-line { display:none; }
+    .tl-body { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; flex:1; }
+    .tl-year { font-size:0.65rem; letter-spacing:3px; color:var(--green); margin-bottom:6px; }
+    .tl-body h4 { font-weight:700; margin-bottom:8px; }
+    .tl-body p { color:var(--muted); font-size:0.86rem; line-height:1.7; }
+
+    /* Values */
+    .values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .value-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px; text-align:center; transition:border-color .3s,transform .3s; }
+    .value-card:hover { border-color:rgba(74,222,128,0.3); transform:translateY(-4px); }
+    .value-icon { font-size:2.2rem; margin-bottom:14px; }
+    .value-card h3 { font-weight:700; margin-bottom:10px; }
+    .value-card p { color:var(--muted); font-size:0.84rem; line-height:1.7; }
+
+    /* Team */
+    .team-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:20px; }
+    .member-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:24px 16px; text-align:center; transition:border-color .3s,transform .3s; }
+    .member-card:hover { border-color:rgba(37,99,235,0.4); transform:translateY(-4px); }
+    .avatar { width:64px; height:64px; border-radius:50%; background:var(--grad); display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.4rem; color:#fff; margin:0 auto 14px; }
+    .member-name { font-weight:700; font-size:0.95rem; margin-bottom:4px; }
+    .member-role { color:var(--green); font-size:0.72rem; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:10px; }
+    .member-bio { color:var(--muted); font-size:0.8rem; line-height:1.6; }
+
+    /* Tech pills */
+    .tech-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .tech-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; display:flex; align-items:center; gap:14px; transition:border-color .3s; }
+    .tech-card:hover { border-color:rgba(37,99,235,0.4); }
+    .tech-icon { font-size:1.8rem; }
+    .tech-name { font-weight:700; font-size:0.9rem; margin-bottom:3px; }
+    .tech-desc { color:var(--muted); font-size:0.78rem; }
+
+    /* Contact */
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .contact-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:28px; }
+    .contact-card h3 { font-weight:700; margin-bottom:16px; }
+    .contact-item { display:flex; align-items:center; gap:14px; padding:12px 0; border-bottom:1px solid var(--border); font-size:0.88rem; color:var(--muted); }
+    .contact-item:last-child { border-bottom:none; }
+    .contact-item a { color:var(--green); text-decoration:none; }
+    .contact-item a:hover { text-decoration:underline; }
+
+    @media(max-width:900px){ .team-grid{grid-template-columns:repeat(3,1fr);} .values-grid{grid-template-columns:1fr 1fr;} .tech-grid{grid-template-columns:1fr 1fr;} }
+    @media(max-width:600px){ .team-grid{grid-template-columns:1fr 1fr;} .values-grid{grid-template-columns:1fr;} .tech-grid{grid-template-columns:1fr;} .contact-grid{grid-template-columns:1fr;} h1{font-size:1.8rem;} .hero-banner{flex-direction:column; padding:24px;} }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="axiom-home-final.html" class="back">← Volver</a>
+  <span class="nav-title">Sobre Nosotros</span>
+  <div style="width:80px"></div>
+</nav>
+
+<div class="page">
+  <p class="tag">// Quiénes somos</p>
+  <h1>Sobre Axiom Technologies</h1>
+  <p class="subtitle">Somos un equipo de desarrollo de software apasionado por crear soluciones digitales que realmente funcionan. Nacimos para hacer el desarrollo accesible, transparente y efectivo.</p>
+  <div class="divider"></div>
+
+  <!-- Hero -->
+  <div class="hero-banner">
+    <div class="hero-banner-icon">🏢</div>
+    <div>
+      <h2>Más que una empresa de software</h2>
+      <p>Axiom Technologies nació con una visión simple: que cualquier negocio, sin importar su tamaño, pueda acceder a software de calidad. Empezamos vendiendo y alquilando código propio y hoy desarrollamos proyectos completos a medida con un equipo comprometido y metodologías modernas.</p>
+    </div>
+  </div>
+
+  <!-- Historia -->
+  <p class="section-label">// Nuestra historia</p>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot">💡</div><div class="tl-line"></div></div>
+      <div class="tl-body"><p class="tl-year">// INICIO</p><h4>La idea</h4><p>Todo empezó con un grupo de amigos apasionados por la programación que querían resolver un problema real: el software de calidad era caro e inaccesible para la mayoría de los negocios en Argentina. Decidimos cambiar eso.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot">🛒</div><div class="tl-line"></div></div>
+      <div class="tl-body"><p class="tl-year">// PRIMEROS PASOS</p><h4>Venta y alquiler de código</h4><p>Comenzamos desarrollando soluciones propias y ofreciéndolas en modalidad de venta o alquiler. E-commerce, sistemas de turnos, landing pages — código probado, listo para usar y personalizable.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot">🚀</div><div class="tl-line"></div></div>
+      <div class="tl-body"><p class="tl-year">// CRECIMIENTO</p><h4>Proyectos a medida</h4><p>La demanda creció y empezamos a desarrollar proyectos completamente personalizados. Cada cliente tiene necesidades únicas, y aprendimos a escuchar antes de escribir una sola línea de código.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot">🌐</div><div class="tl-line"></div></div>
+      <div class="tl-body"><p class="tl-year">// HOY</p><h4>Plataforma Axiom</h4><p>Hoy contamos con nuestra propia plataforma donde los clientes pueden registrarse, ver sus proyectos, acceder a soporte y descubrir nuevas soluciones. Un ecosistema digital completo hecho por nosotros, para vos.</p></div>
+    </div>
+  </div>
+
+  <!-- Valores -->
+  <p class="section-label">// Nuestros valores</p>
+  <div class="values-grid">
+    <div class="value-card"><div class="value-icon">🎯</div><h3>Foco en resultados</h3><p>No entregamos código — entregamos soluciones que generan valor real para tu negocio. El éxito del cliente es nuestra única métrica.</p></div>
+    <div class="value-card"><div class="value-icon">🔍</div><h3>Transparencia total</h3><p>Sin letra chica, sin sorpresas. Te mostramos el avance del proyecto, el código y los costos en todo momento. La confianza se construye con honestidad.</p></div>
+    <div class="value-card"><div class="value-icon">⚡</div><h3>Agilidad real</h3><p>Metodologías ágiles no son una moda para nosotros — son la forma en que trabajamos. Entregas frecuentes, feedback continuo y adaptación constante.</p></div>
+    <div class="value-card"><div class="value-icon">🤝</div><h3>Compromiso genuino</h3><p>Nos involucramos en cada proyecto como si fuera nuestro. Tu problema es nuestro problema, y tu solución es nuestra celebración.</p></div>
+    <div class="value-card"><div class="value-icon">📚</div><h3>Aprendizaje continuo</h3><p>La tecnología evoluciona rápido y nosotros también. Estudiamos, experimentamos y adoptamos las mejores prácticas para dar siempre lo más actualizado.</p></div>
+    <div class="value-card"><div class="value-icon">🌱</div><h3>Crecimiento conjunto</h3><p>Creemos que cuando nuestros clientes crecen, nosotros crecemos. Construimos relaciones a largo plazo, no transacciones únicas.</p></div>
+  </div>
+
+  <!-- Equipo -->
+  <p class="section-label">// El equipo</p>
+  <div class="team-grid">
+    <div class="member-card"><div class="avatar">L</div><p class="member-name">Luis</p><p class="member-role">Frontend Dev</p><p class="member-bio">Ayuda en el frontend y se encarga en la comunicacion con el cliente.</div>
+    <div class="member-card"><div class="avatar">F</div><p class="member-name">Flor</p><p class="member-role">Backend Dev</p><p class="member-bio">Diseña interfaces centradas en el usuario. Combina estética y funcionalidad en cada pantalla.</p></div>
+    <div class="member-card"><div class="avatar">A</div><p class="member-name">Angel</p><p class="member-role">Backend Dev</p><p class="member-bio">Coordina los proyectos y construye la logica y la infraestructura que hacer funcionar todo por detras. </p></div>
+    <div class="member-card"><div class="avatar">C</div><p class="member-name">Cristian</p><p class="member-role">Backend Dev</p><p class="member-bio">Construye la lógica y la infraestructura que hace funcionar todo por detrás. Base de datos y APIs.</p></div>
+    <div class="member-card"><div class="avatar">A</div><p class="member-name">Aylen</p><p class="member-role">Frontend Dev</p><p class="member-bio">Diseña interfaces centradas en el usuario. Combina estética y funcionalidad en cada pantalla.</p></div>
+  </div>
+
+  <!-- Tecnologías -->
+  <p class="section-label">// Tecnologías que usamos</p>
+  <div class="tech-grid">
+    <div class="tech-card"><div class="tech-icon">🌐</div><div><p class="tech-name">HTML / CSS / JS</p><p class="tech-desc">Base de todo. Maquetado semántico, estilos modernos e interactividad nativa.</p></div></div>
+    <div class="tech-card"><div class="tech-icon">🗄️</div><div><p class="tech-name">SQL / MySQL</p><p class="tech-desc">Bases de datos relacionales optimizadas para cada tipo de proyecto.</p></div></div>
+    <div class="tech-card"><div class="tech-icon">🔷</div><div><p class="tech-name">C#</p><p class="tech-desc">Aplicaciones robustas y sistemas empresariales con el ecosistema .NET.</p></div></div>
+    <div class="tech-card"><div class="tech-icon">☁️</div><div><p class="tech-name">Cloud & Deploy</p><p class="tech-desc">Hosting en Vercel, Railway y AWS. Deploy continuo y ambientes de staging.</p></div></div>
+  </div>
+
+  <!-- Contacto -->
+  <p class="section-label">// Contacto</p>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3>Escribinos</h3>
+      <div class="contact-item">📧 <a href="mailto:axiomtecharg@gmail.com">axiomtecharg@gmail.com</a></div>
+      <div class="contact-item">📍 Argentina</div>
+      <div class="contact-item">🕐 Las 24 hora hs</div>
+      <div class="contact-item">⚡ Respuesta en menos de 24hs</div>
+    </div>
+    <div class="contact-card">
+      <h3>Seguinos</h3>
+      <div class="contact-item">📸 <a href="#">Instagram — @axiomtech</a></div>
+      <div class="contact-item">💼 <a href="#">LinkedIn — Axiom Technologies</a></div>
+      <div class="contact-item">🐙 <a href="#">GitHub — @axiomtech</a></div>
+      <div class="contact-item">✖ <a href="#">Twitter/X — @axiomtech</a></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

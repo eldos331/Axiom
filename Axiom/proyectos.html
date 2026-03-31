@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Proyectos — Axiom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --blue:#2563EB; --green:#4ADE80; --dark:#0a0f1e; --dark2:#0f172a; --card:#111827; --border:rgba(255,255,255,0.07); --text:#e2e8f0; --muted:#94a3b8; --grad:linear-gradient(135deg,#2563EB,#4ADE80); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Exo 2',sans-serif; background:var(--dark); color:var(--text); }
+    nav { display:flex; align-items:center; justify-content:space-between; padding:0 24px; height:64px; background:linear-gradient(90deg,#2563EB,#1aa060,#4ADE80); }
+    .back { color:#fff; text-decoration:none; font-weight:700; font-size:0.85rem; letter-spacing:1px; border:2px solid #fff; padding:7px 16px; border-radius:30px; transition:background .2s,color .2s; }
+    .back:hover { background:#fff; color:#2563EB; }
+    .nav-title { font-weight:900; font-size:1.1rem; letter-spacing:2px; color:#fff; text-transform:uppercase; }
+    .page { max-width:1000px; margin:0 auto; padding:60px 28px 80px; }
+    .tag { font-size:0.7rem; letter-spacing:4px; color:var(--green); text-transform:uppercase; margin-bottom:10px; }
+    h1 { font-size:2.4rem; font-weight:900; margin-bottom:12px; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .subtitle { color:var(--muted); font-size:1rem; line-height:1.7; max-width:620px; margin-bottom:16px; }
+    .divider { width:48px; height:3px; background:var(--grad); border-radius:2px; margin-bottom:48px; }
+    .section-label { font-size:0.7rem; letter-spacing:4px; color:var(--green); text-transform:uppercase; margin-bottom:24px; margin-top:56px; }
+
+    /* Filtros */
+    .filters { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px; }
+    .filter-btn { background:var(--card); border:1px solid var(--border); color:var(--muted); font-family:'Exo 2',sans-serif; font-size:0.78rem; letter-spacing:1px; padding:8px 18px; border-radius:30px; cursor:pointer; transition:border-color .2s,color .2s,background .2s; }
+    .filter-btn:hover, .filter-btn.active { border-color:var(--green); color:var(--green); background:rgba(74,222,128,0.08); }
+
+    /* Project cards */
+    .projects-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .project-card { background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; transition:transform .3s,border-color .3s; }
+    .project-card:hover { transform:translateY(-6px); border-color:rgba(37,99,235,0.4); }
+    .project-img { height:180px; display:flex; align-items:center; justify-content:center; font-size:3rem; position:relative; }
+    .c1{background:linear-gradient(135deg,rgba(37,99,235,0.35),rgba(37,99,235,0.05))}
+    .c2{background:linear-gradient(135deg,rgba(74,222,128,0.3),rgba(37,99,235,0.1))}
+    .c3{background:linear-gradient(135deg,rgba(99,102,241,0.35),rgba(74,222,128,0.1))}
+    .c4{background:linear-gradient(135deg,rgba(37,99,235,0.2),rgba(74,222,128,0.3))}
+    .c5{background:linear-gradient(135deg,rgba(251,191,36,0.25),rgba(37,99,235,0.15))}
+    .project-badge { position:absolute; top:16px; right:16px; background:rgba(0,0,0,0.5); backdrop-filter:blur(8px); border:1px solid var(--border); color:var(--green); font-size:0.62rem; letter-spacing:2px; text-transform:uppercase; padding:5px 12px; border-radius:20px; }
+    .project-body { padding:28px; }
+    .project-category { font-size:0.65rem; letter-spacing:3px; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
+    .project-body h3 { font-weight:800; font-size:1.15rem; margin-bottom:12px; }
+    .project-body p { color:var(--muted); font-size:0.87rem; line-height:1.75; margin-bottom:20px; }
+    .project-features { list-style:none; display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
+    .project-features li { display:flex; gap:10px; font-size:0.83rem; color:var(--muted); align-items:flex-start; }
+    .project-features li::before { content:'→'; color:var(--green); flex-shrink:0; }
+    .project-stack { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:20px; }
+    .stack-pill { background:rgba(37,99,235,0.1); border:1px solid rgba(37,99,235,0.25); color:#93c5fd; font-size:0.7rem; padding:3px 10px; border-radius:12px; }
+    .project-footer { display:flex; justify-content:space-between; align-items:center; padding-top:16px; border-top:1px solid var(--border); }
+    .project-status { display:flex; align-items:center; gap:6px; font-size:0.75rem; color:var(--muted); }
+    .status-dot { width:7px; height:7px; border-radius:50%; }
+    .status-dot.disponible { background:var(--green); box-shadow:0 0 6px var(--green); }
+    .status-dot.desarrollo { background:#f59e0b; }
+    .btn-small { background:var(--grad); color:#fff; border:none; font-family:'Exo 2',sans-serif; font-weight:700; font-size:0.75rem; letter-spacing:1px; padding:8px 18px; border-radius:6px; cursor:pointer; text-transform:uppercase; text-decoration:none; transition:transform .2s,box-shadow .2s; }
+    .btn-small:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(37,99,235,0.4); }
+
+    /* Alquiler banner */
+    .alquiler-banner { background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(74,222,128,0.06)); border:1px solid rgba(74,222,128,0.2); border-radius:16px; padding:36px; display:flex; gap:24px; align-items:center; flex-wrap:wrap; }
+    .alquiler-banner-icon { font-size:3rem; }
+    .alquiler-banner h2 { font-size:1.3rem; font-weight:900; margin-bottom:8px; }
+    .alquiler-banner p { color:var(--muted); font-size:0.88rem; line-height:1.7; max-width:480px; }
+    .alquiler-features { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .alquiler-pill { background:rgba(74,222,128,0.08); border:1px solid rgba(74,222,128,0.2); color:var(--green); font-size:0.75rem; padding:5px 12px; border-radius:20px; }
+
+    /* CTA */
+    .cta-box { background:linear-gradient(135deg,rgba(37,99,235,0.15),rgba(74,222,128,0.08)); border:1px solid rgba(74,222,128,0.25); border-radius:16px; padding:40px; text-align:center; margin-top:56px; }
+    .cta-box h2 { font-size:1.8rem; font-weight:900; margin-bottom:12px; }
+    .cta-box p { color:var(--muted); margin-bottom:28px; }
+    .btn { background:var(--grad); color:#fff; border:none; font-family:'Exo 2',sans-serif; font-weight:700; font-size:0.9rem; letter-spacing:1.5px; padding:14px 32px; border-radius:6px; cursor:pointer; text-transform:uppercase; text-decoration:none; display:inline-block; transition:transform .2s,box-shadow .2s; }
+    .btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(37,99,235,0.4); }
+
+    @media(max-width:700px){ .projects-grid{grid-template-columns:1fr;} h1{font-size:1.9rem;} .alquiler-banner{flex-direction:column;} }
+    @media(max-width:480px){ h1{font-size:1.6rem;} .page{padding:40px 18px 60px;} }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="axiom-home-final.html" class="back">← Volver</a>
+  <span class="nav-title">Proyectos</span>
+  <div style="width:80px"></div>
+</nav>
+
+<div class="page">
+  <p class="tag">// Nuestro trabajo</p>
+  <h1>Proyectos de Axiom Technologies</h1>
+  <p class="subtitle">Cada proyecto que desarrollamos es una solución real a un problema real. Acá podés ver una muestra de lo que hacemos y cómo lo hacemos.</p>
+  <div class="divider"></div>
+
+  <!-- Filtros -->
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterProjects('all', this)">Todos</button>
+    <button class="filter-btn" onclick="filterProjects('ecommerce', this)">E-commerce</button>
+    <button class="filter-btn" onclick="filterProjects('dashboard', this)">Dashboards</button>
+    <button class="filter-btn" onclick="filterProjects('salud', this)">Salud</button>
+    <button class="filter-btn" onclick="filterProjects('educacion', this)">Educación</button>
+    <button class="filter-btn" onclick="filterProjects('logistica', this)">Logística</button>
+  </div>
+
+  <!-- Proyectos -->
+  <div class="projects-grid" id="projectsGrid">
+
+    <div class="project-card" data-cat="ecommerce">
+      <div class="project-img c1">🛒<span class="project-badge">Disponible para alquilar</span></div>
+      <div class="project-body">
+        <p class="project-category">// E-commerce</p>
+        <h3>Tienda Digital Pro</h3>
+        <p>Plataforma de ventas online completa pensada para PyMEs y emprendimientos que quieren empezar a vender en internet de forma rápida y profesional.</p>
+        <ul class="project-features">
+          <li>Catálogo de productos con filtros y búsqueda</li>
+          <li>Carrito de compras y proceso de checkout</li>
+          <li>Integración con MercadoPago</li>
+          <li>Panel de administración de pedidos e inventario</li>
+          <li>Sistema de cupones y descuentos</li>
+          <li>Diseño responsive y optimizado para mobile</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-pill">React</span>
+          <span class="stack-pill">Node.js</span>
+          <span class="stack-pill">MySQL</span>
+          <span class="stack-pill">MercadoPago API</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-status"><div class="status-dot disponible"></div>Disponible para alquiler</div>
+          <a href="mailto:axiomtecharg@gmail.com" class="btn-small">Consultar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="dashboard">
+      <div class="project-img c2">📊<span class="project-badge">A medida</span></div>
+      <div class="project-body">
+        <p class="project-category">// Dashboard</p>
+        <h3>Analytics Hub</h3>
+        <p>Panel de métricas en tiempo real desarrollado para equipos de marketing digital que necesitan visualizar datos de múltiples fuentes en un solo lugar.</p>
+        <ul class="project-features">
+          <li>Gráficos interactivos con datos en tiempo real</li>
+          <li>Integración con Google Analytics y Meta Ads</li>
+          <li>Exportación de reportes en PDF y Excel</li>
+          <li>Alertas automáticas por email ante anomalías</li>
+          <li>Sistema de permisos por roles de usuario</li>
+          <li>Vista mobile optimizada para control rápido</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-pill">React</span>
+          <span class="stack-pill">Chart.js</span>
+          <span class="stack-pill">Node.js</span>
+          <span class="stack-pill">Google API</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-status"><div class="status-dot disponible"></div>Disponible a medida</div>
+          <a href="mailto:axiomtecharg@gmail.com" class="btn-small">Consultar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="salud">
+      <div class="project-img c3">🏥<span class="project-badge">Disponible para alquilar</span></div>
+      <div class="project-body">
+        <p class="project-category">// Salud</p>
+        <h3>MedTrack</h3>
+        <p>Sistema completo de gestión de turnos y pacientes para clínicas, consultorios y profesionales de la salud. Simple de usar, potente por dentro.</p>
+        <ul class="project-features">
+          <li>Agenda de turnos con calendario visual</li>
+          <li>Recordatorios automáticos por WhatsApp y email</li>
+          <li>Historia clínica digital por paciente</li>
+          <li>Gestión de múltiples profesionales y consultorios</li>
+          <li>Estadísticas de asistencia y cancelaciones</li>
+          <li>Acceso desde cualquier dispositivo</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-pill">HTML/CSS/JS</span>
+          <span class="stack-pill">PHP</span>
+          <span class="stack-pill">MySQL</span>
+          <span class="stack-pill">WhatsApp API</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-status"><div class="status-dot disponible"></div>Disponible para alquiler</div>
+          <a href="mailto:axiomtecharg@gmail.com" class="btn-small">Consultar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="educacion">
+      <div class="project-img c4">🎓<span class="project-badge">A medida</span></div>
+      <div class="project-body">
+        <p class="project-category">// Educación</p>
+        <h3>EduFlow</h3>
+        <p>Plataforma de aprendizaje online (LMS) personalizada para instituciones educativas, academias y profesores que quieren digitalizar sus cursos.</p>
+        <ul class="project-features">
+          <li>Módulos y lecciones con video, texto y archivos</li>
+          <li>Sistema de evaluaciones y certificados</li>
+          <li>Seguimiento del progreso por alumno</li>
+          <li>Foro de consultas por curso</li>
+          <li>Panel del docente con estadísticas detalladas</li>
+          <li>Integración con pagos para cursos de pago</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-pill">React</span>
+          <span class="stack-pill">Node.js</span>
+          <span class="stack-pill">MongoDB</span>
+          <span class="stack-pill">AWS S3</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-status"><div class="status-dot disponible"></div>Disponible a medida</div>
+          <a href="mailto:axiomtecharg@gmail.com" class="btn-small">Consultar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="logistica">
+      <div class="project-img c5">📦<span class="project-badge">Disponible para alquilar</span></div>
+      <div class="project-body">
+        <p class="project-category">// Logística</p>
+        <h3>DeliverApp</h3>
+        <p>Plataforma integral de gestión y seguimiento de envíos en tiempo real. Ideal para empresas de distribución, courriers y logística de última milla.</p>
+        <ul class="project-features">
+          <li>Seguimiento de envíos en tiempo real con mapa</li>
+          <li>App para repartidores (PWA mobile)</li>
+          <li>Notificaciones automáticas al destinatario</li>
+          <li>Panel de control para gestión de rutas</li>
+          <li>Historial y reportes de entregas</li>
+          <li>Firma digital al recibir el pedido</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-pill">React</span>
+          <span class="stack-pill">Node.js</span>
+          <span class="stack-pill">Google Maps API</span>
+          <span class="stack-pill">MySQL</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-status"><div class="status-dot disponible"></div>Disponible para alquiler</div>
+          <a href="mailto:axiomtecharg@gmail.com" class="btn-small">Consultar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="dashboard">
+      <div class="project-img c1">💼<span class="project-badge">En desarrollo</span></div>
+      <div class="project-body">
+        <p class="project-category">// Gestión empresarial</p>
+        <h3>AxiomERP — Próximamente</h3>
+        <p>Sistema ERP liviano para PyMEs argentinas. Gestión de clientes, facturación, stock e inventario en una sola plataforma. Integración con AFIP.</p>
+        <ul class="project-features">
+          <li>Gestión de clientes y proveedores (CRM)</li>
+          <li>Facturación electrónica integrada con AFIP</li>
+          <li>Control de stock e inventario en tiempo real</li>
+          <li>Reportes contables básicos</li>
+          <li>Multi-usuario con control de accesos</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-pill">React</span>
+          <span class="stack-pill">C#</span>
+          <span class="stack-pill">SQL Server</span>
+          <span class="stack-pill">AFIP API</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-status"><div class="status-dot desarrollo"></div>En desarrollo</div>
+          <a href="mailto:axiomtecharg@gmail.com" class="btn-small">Pre-registrar</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Alquiler banner -->
+  <p class="section-label">// ¿Necesitás algo rápido?</p>
+  <div class="alquiler-banner">
+    <div class="alquiler-banner-icon">⚡</div>
+    <div>
+      <h2>Alquilá una solución lista en 48hs</h2>
+      <p>Si no querés esperar meses, alquilá uno de nuestros sistemas ya desarrollados. Lo personalizamos con tu marca, colores y datos, y lo tenés funcionando en tiempo récord.</p>
+      <div class="alquiler-features">
+        <span class="alquiler-pill">✓ Tu logo y colores</span>
+        <span class="alquiler-pill">✓ Hosting incluido</span>
+        <span class="alquiler-pill">✓ Soporte continuo</span>
+        <span class="alquiler-pill">✓ Sin contrato de permanencia</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>¿Tenés una idea propia?</h2>
+    <p>Desarrollamos tu proyecto desde cero. Contanos de qué se trata y te preparamos una propuesta en 24 horas.</p>
+    <a href="mailto:axiomtecharg@gmail.com" class="btn">Hablar con el equipo</a>
+  </div>
+
+</div>
+
+<script>
+  function filterProjects(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.project-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+</body>
+</html>

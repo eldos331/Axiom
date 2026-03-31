@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacidad — Axiom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --blue:#2563EB; --green:#4ADE80; --dark:#0a0f1e; --dark2:#0f172a; --card:#111827; --border:rgba(255,255,255,0.07); --text:#e2e8f0; --muted:#94a3b8; --grad:linear-gradient(135deg,#2563EB,#4ADE80); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Exo 2',sans-serif; background:var(--dark); color:var(--text); }
+    nav { display:flex; align-items:center; justify-content:space-between; padding:0 24px; height:64px; background:linear-gradient(90deg,#2563EB,#1aa060,#4ADE80); }
+    .back { color:#fff; text-decoration:none; font-weight:700; font-size:0.85rem; letter-spacing:1px; border:2px solid #fff; padding:7px 16px; border-radius:30px; transition:background .2s,color .2s; }
+    .back:hover { background:#fff; color:#2563EB; }
+    .nav-title { font-weight:900; font-size:1.1rem; letter-spacing:2px; color:#fff; text-transform:uppercase; }
+    .page { max-width:860px; margin:0 auto; padding:60px 28px 80px; }
+    .tag { font-size:0.7rem; letter-spacing:4px; color:var(--green); text-transform:uppercase; margin-bottom:10px; }
+    h1 { font-size:2.4rem; font-weight:900; margin-bottom:12px; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .update-date { color:var(--muted); font-size:0.8rem; margin-bottom:16px; }
+    .divider { width:48px; height:3px; background:var(--grad); border-radius:2px; margin-bottom:48px; }
+
+    /* Index */
+    .index { background:var(--dark2); border:1px solid var(--border); border-radius:12px; padding:24px 28px; margin-bottom:48px; }
+    .index h3 { font-size:0.75rem; letter-spacing:3px; text-transform:uppercase; color:var(--green); margin-bottom:16px; }
+    .index ol { padding-left:20px; display:flex; flex-direction:column; gap:8px; }
+    .index ol li a { color:var(--muted); text-decoration:none; font-size:0.88rem; transition:color .2s; }
+    .index ol li a:hover { color:var(--green); }
+
+    /* Sections */
+    .section { margin-bottom:48px; scroll-margin-top:20px; }
+    .section h2 { font-size:1.25rem; font-weight:800; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:12px; }
+    .section h2 .num { background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-size:0.75rem; letter-spacing:2px; font-weight:700; }
+    .section p { color:var(--muted); font-size:0.9rem; line-height:1.85; margin-bottom:14px; }
+    .section ul { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:14px; }
+    .section ul li { display:flex; gap:12px; align-items:flex-start; color:var(--muted); font-size:0.88rem; line-height:1.7; }
+    .section ul li::before { content:'→'; color:var(--green); flex-shrink:0; }
+    .highlight { background:rgba(37,99,235,0.08); border:1px solid rgba(37,99,235,0.2); border-left:3px solid var(--blue); border-radius:0 8px 8px 0; padding:16px 20px; margin:16px 0; }
+    .highlight p { color:var(--text); margin:0; font-size:0.87rem; }
+    .contact-box { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:28px; margin-top:16px; }
+    .contact-box p { color:var(--muted); margin-bottom:8px; }
+    .contact-box a { color:var(--green); text-decoration:none; }
+    .contact-box a:hover { text-decoration:underline; }
+
+    @media(max-width:600px){ h1{font-size:1.8rem;} .page{padding:40px 18px 60px;} }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="axiom-home-final.html" class="back">← Volver</a>
+  <span class="nav-title">Privacidad</span>
+  <div style="width:80px"></div>
+</nav>
+
+<div class="page">
+  <p class="tag">// Legal</p>
+  <h1>Política de Privacidad</h1>
+  <p class="update-date">Última actualización: Marzo 2025</p>
+  <div class="divider"></div>
+
+  <!-- Índice -->
+  <div class="index">
+    <h3>// Contenido</h3>
+    <ol>
+      <li><a href="#info">¿Qué información recopilamos?</a></li>
+      <li><a href="#uso">¿Para qué usamos tu información?</a></li>
+      <li><a href="#almacenamiento">Almacenamiento y seguridad</a></li>
+      <li><a href="#compartir">¿Compartimos tu información?</a></li>
+      <li><a href="#cookies">Cookies y tecnologías similares</a></li>
+      <li><a href="#derechos">Tus derechos</a></li>
+      <li><a href="#menores">Menores de edad</a></li>
+      <li><a href="#cambios">Cambios en esta política</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ol>
+  </div>
+
+  <div class="section" id="intro">
+    <p>En <strong>Axiom Technologies</strong> nos tomamos muy en serio la privacidad de nuestros usuarios y clientes. Esta política describe cómo recopilamos, usamos, almacenamos y protegemos tu información personal cuando interactuás con nuestra plataforma, sitio web o servicios.</p>
+    <p>Al usar nuestros servicios, aceptás los términos descritos en este documento. Si tenés alguna duda, podés contactarnos en cualquier momento.</p>
+  </div>
+
+  <div class="section" id="info">
+    <h2><span class="num">// 01</span> ¿Qué información recopilamos?</h2>
+    <p>Recopilamos información de distintas maneras según cómo interactuás con Axiom:</p>
+    <ul>
+      <li><strong>Datos de registro:</strong> nombre, apellido, correo electrónico y contraseña cuando creás una cuenta.</li>
+      <li><strong>Datos de perfil:</strong> información adicional que decidís completar como empresa, sitio web o descripción del proyecto.</li>
+      <li><strong>Datos de uso:</strong> páginas visitadas, tiempo de sesión, clics y comportamiento general dentro de la plataforma.</li>
+      <li><strong>Datos técnicos:</strong> dirección IP, tipo de navegador, sistema operativo y dispositivo.</li>
+      <li><strong>Comunicaciones:</strong> mensajes que nos enviás por email o formularios de contacto.</li>
+    </ul>
+    <div class="highlight">
+      <p>🔒 Nunca recopilamos datos de tarjetas de crédito ni información financiera directamente. Cualquier pago es procesado por plataformas externas certificadas.</p>
+    </div>
+  </div>
+
+  <div class="section" id="uso">
+    <h2><span class="num">// 02</span> ¿Para qué usamos tu información?</h2>
+    <p>La información que recopilamos se usa exclusivamente para:</p>
+    <ul>
+      <li>Crear y gestionar tu cuenta en la plataforma Axiom.</li>
+      <li>Brindarte acceso a los servicios contratados.</li>
+      <li>Enviarte comunicaciones relacionadas con tu cuenta o proyectos.</li>
+      <li>Mejorar la experiencia de usuario y el rendimiento de la plataforma.</li>
+      <li>Detectar y prevenir fraudes o usos indebidos.</li>
+      <li>Cumplir con obligaciones legales cuando corresponda.</li>
+    </ul>
+    <p>No utilizamos tu información para publicidad de terceros ni la vendemos a ninguna empresa.</p>
+  </div>
+
+  <div class="section" id="almacenamiento">
+    <h2><span class="num">// 03</span> Almacenamiento y seguridad</h2>
+    <p>Tus datos son almacenados en servidores con altos estándares de seguridad. Implementamos las siguientes medidas de protección:</p>
+    <ul>
+      <li>Encriptación de contraseñas con algoritmos seguros (bcrypt).</li>
+      <li>Comunicaciones cifradas mediante HTTPS/TLS en toda la plataforma.</li>
+      <li>Acceso restringido a datos personales solo para personal autorizado de Axiom.</li>
+      <li>Backups periódicos para prevenir pérdida de información.</li>
+      <li>Monitoreo activo para detectar accesos no autorizados.</li>
+    </ul>
+    <p>Conservamos tus datos mientras tengas una cuenta activa. Si eliminás tu cuenta, tus datos serán borrados en un plazo máximo de 30 días.</p>
+  </div>
+
+  <div class="section" id="compartir">
+    <h2><span class="num">// 04</span> ¿Compartimos tu información?</h2>
+    <p>No vendemos, alquilamos ni compartimos tu información personal con terceros, excepto en los siguientes casos:</p>
+    <ul>
+      <li><strong>Proveedores de servicio:</strong> empresas que nos ayudan a operar la plataforma (hosting, email, analytics) bajo acuerdos de confidencialidad.</li>
+      <li><strong>Requerimientos legales:</strong> cuando una autoridad competente lo exija mediante orden judicial.</li>
+      <li><strong>Protección de derechos:</strong> si es necesario para proteger los derechos, propiedad o seguridad de Axiom o sus usuarios.</li>
+    </ul>
+    <div class="highlight">
+      <p>📌 Cualquier proveedor externo con acceso a datos está obligado contractualmente a mantener la confidencialidad y no usar esa información para otros fines.</p>
+    </div>
+  </div>
+
+  <div class="section" id="cookies">
+    <h2><span class="num">// 05</span> Cookies y tecnologías similares</h2>
+    <p>Utilizamos cookies para mejorar la experiencia de navegación. Existen distintos tipos:</p>
+    <ul>
+      <li><strong>Cookies esenciales:</strong> necesarias para el funcionamiento básico (sesión, autenticación). No se pueden desactivar.</li>
+      <li><strong>Cookies de rendimiento:</strong> nos ayudan a entender cómo se usa la plataforma para mejorarla (Google Analytics).</li>
+      <li><strong>Cookies de preferencias:</strong> recuerdan tus configuraciones como idioma o tema.</li>
+    </ul>
+    <p>Podés gestionar o desactivar las cookies no esenciales desde la configuración de tu navegador. Esto no afectará el funcionamiento esencial de la plataforma.</p>
+  </div>
+
+  <div class="section" id="derechos">
+    <h2><span class="num">// 06</span> Tus derechos</h2>
+    <p>Como usuario de Axiom, tenés los siguientes derechos respecto a tus datos personales:</p>
+    <ul>
+      <li><strong>Acceso:</strong> podés solicitar una copia de los datos que tenemos sobre vos.</li>
+      <li><strong>Rectificación:</strong> podés corregir datos incorrectos o desactualizados.</li>
+      <li><strong>Eliminación:</strong> podés solicitar el borrado de tus datos personales.</li>
+      <li><strong>Portabilidad:</strong> podés pedir tus datos en un formato exportable.</li>
+      <li><strong>Oposición:</strong> podés oponerte al procesamiento de tus datos en ciertos casos.</li>
+    </ul>
+    <p>Para ejercer cualquiera de estos derechos, contactanos por email con el asunto "Derechos de datos".</p>
+  </div>
+
+  <div class="section" id="menores">
+    <h2><span class="num">// 07</span> Menores de edad</h2>
+    <p>Nuestros servicios están dirigidos a personas mayores de 18 años. No recopilamos intencionalmente información de menores de edad.</p>
+    <p>Si sos padre, madre o tutor y creés que tu hijo/a nos proporcionó datos personales, contactanos de inmediato para proceder con la eliminación.</p>
+  </div>
+
+  <div class="section" id="cambios">
+    <h2><span class="num">// 08</span> Cambios en esta política</h2>
+    <p>Podemos actualizar esta Política de Privacidad periódicamente. Cuando lo hagamos, actualizaremos la fecha al inicio del documento y te notificaremos por email si los cambios son significativos.</p>
+    <p>Te recomendamos revisar esta página ocasionalmente para estar al tanto de cualquier novedad.</p>
+  </div>
+
+  <div class="section" id="contacto">
+    <h2><span class="num">// 09</span> Contacto</h2>
+    <p>Si tenés preguntas, dudas o reclamos sobre esta política o el manejo de tus datos, no dudes en contactarnos:</p>
+    <div class="contact-box">
+      <p>📧 &nbsp;<a href="mailto:axiomtecharg@gmail.com">axiomtecharg@gmail.com</a></p>
+      <p>📍 &nbsp;Argentina</p>
+      <p>🕐 &nbsp;Lun–Vie, 9 a 18 hs — respondemos en menos de 24 horas</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
